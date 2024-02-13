@@ -140,7 +140,7 @@ def encontrar_url(texto):
     
     return urls_encontradas
 
-  def main(model_name=None, file_name=None, prompt=None):
+def main(model_name=None, file_name=None, prompt=None):
     assert model_name is not None, "model_name argument is missing."
 
     is_chat_model = 'chat' in model_name.lower()
@@ -161,7 +161,8 @@ def encontrar_url(texto):
     if prompt:
         # Si se proporciona un prompt, generamos una respuesta basada en él.
         history = [[prompt, ""]]
-        run_chat(model, tokenizer, is_chat_model, model_type, history)
+        respuesta = run_chat(model, tokenizer, is_chat_model, model_type, history)
+        print(respuesta)
     else:
         # Si no hay prompt, ejecutamos la interfaz de usuario.
         run_ui(model, tokenizer, is_chat_model, model_type)
